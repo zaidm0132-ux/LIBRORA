@@ -1,0 +1,31 @@
+
+@startuml
+title LIBRORA - Borrowing Request State Diagram
+
+[*] --> Pending : Student submits request
+
+Pending --> Approved : Admin approves request
+Pending --> Rejected : Admin rejects request
+
+Approved --> Returned : Student returns book
+
+Rejected --> [*]
+Returned --> [*]
+
+note right of Pending
+  Waiting for admin decision
+end note
+
+note right of Approved
+  Book is borrowed
+end note
+
+note right of Rejected
+  Request was declined
+end note
+
+note right of Returned
+  Book is available again
+end note
+
+@enduml
