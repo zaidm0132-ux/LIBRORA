@@ -1,0 +1,60 @@
+
+@startuml
+title LIBRORA - Use Case Diagram
+
+left to right direction
+
+actor Student
+actor Admin
+
+rectangle "LIBRORA Digital Library System" {
+
+  usecase "Register" as UC1
+  usecase "Login" as UC2
+  usecase "Browse Books" as UC3
+  usecase "Search Books" as UC4
+  usecase "Filter Books" as UC5
+  usecase "View Book Details" as UC6
+  usecase "Request to Borrow Book" as UC7
+  usecase "View Borrowing History" as UC8
+  usecase "Manage Profile" as UC9
+  usecase "View Notifications" as UC10
+  usecase "Logout" as UC11
+
+  usecase "Manage Books" as UC12
+  usecase "Manage Students" as UC13
+  usecase "View Borrowing Requests" as UC14
+  usecase "Approve Request" as UC15
+  usecase "Reject Request" as UC16
+  usecase "Confirm Book Return" as UC17
+  usecase "View Reports & Analytics" as UC18
+}
+
+Student --> UC1
+Student --> UC2
+Student --> UC3
+Student --> UC4
+Student --> UC5
+Student --> UC6
+Student --> UC7
+Student --> UC8
+Student --> UC9
+Student --> UC10
+Student --> UC11
+
+Admin --> UC2
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+Admin --> UC15
+Admin --> UC16
+Admin --> UC17
+Admin --> UC18
+
+UC15 ..> UC14 : <<extend>>
+UC16 ..> UC14 : <<extend>>
+UC17 ..> UC14 : <<extend>>
+
+@enduml
