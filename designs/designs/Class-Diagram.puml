@@ -1,0 +1,74 @@
+
+@startuml
+title LIBRORA - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+
+class User {
+  - name: String
+  - email: String
+  - password: String
+  - role: String
+  + login()
+  + logout()
+  + updateProfile()
+}
+
+class Student {
+  - phone: String
+  + register()
+  + requestBorrow()
+  + viewBorrowingHistory()
+}
+
+class Admin {
+  + manageBooks()
+  + manageStudents()
+  + manageBorrowingRequests()
+  + generateReports()
+}
+
+class Book {
+  - id: Integer
+  - title: String
+  - author: String
+  - category: String
+  - isbn: String
+  - rating: Float
+  - status: String
+  + getDetails()
+  + updateAvailability()
+}
+
+class Borrowing {
+  - id: Integer
+  - requestedAt: Date
+  - status: String
+  + createRequest()
+  + approve()
+  + reject()
+  + returnBook()
+}
+
+class Notification {
+  - id: Integer
+  - title: String
+  - message: String
+  - type: String
+  - read: Boolean
+  - createdAt: Date
+  + markAsRead()
+}
+
+User <|-- Student
+User <|-- Admin
+
+Student "1" -- "0..*" Borrowing : creates
+Book "1" -- "0..*" Borrowing : requested in
+User "1" -- "0..*" Notification : receives
+Admin ..> Book : manages
+Admin ..> Student : manages
+Admin ..> Borrowing : manages
+
+@enduml
